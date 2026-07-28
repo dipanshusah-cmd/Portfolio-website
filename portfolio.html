@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dipanshu Raj | Portfolio</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- FontAwesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+  scroll-behavior:smooth;
+}
+
+body{
+  background:#0f172a;
+  color:#fff;
+  overflow-x:hidden;
+}
+
+#particles-js{
+  position:fixed;
+  width:100%;
+  height:100%;
+  z-index:-1;
+}
+
+/* Navbar */
+nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 8%;
+  background:rgba(15,23,42,.95);
+  backdrop-filter:blur(10px);
+  position:fixed;
+  width:100%;
+  top:0;
+  z-index:1000;
+  border-bottom:1px solid rgba(255,255,255,0.05);
+}
+
+.logo{
+  font-size:28px;
+  font-weight:700;
+  color:#38bdf8;
+  text-decoration:none;
+}
+
+nav ul{
+  display:flex;
+  list-style:none;
+  gap:25px;
+}
+
+nav ul li a{
+  color:white;
+  text-decoration:none;
+  transition:.3s;
+  font-weight:500;
+}
+
+nav ul li a:hover, nav ul li a.active{
+  color:#38bdf8;
+}
+
+.menu-btn{
+  display:none;
+  font-size:24px;
+  cursor:pointer;
+  color:#38bdf8;
+}
+
+/* Hero Section */
+.hero{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:120px 8% 60px;
+  gap:60px;
+  flex-wrap:wrap;
+}
+
+.profile{
+  width:300px;
+  height:300px;
+  border-radius:50%;
+  overflow:hidden;
+  border:5px solid #38bdf8;
+  box-shadow:0 0 35px rgba(56, 189, 248, 0.4);
+  transition: transform 0.3s ease;
+}
+
+.profile:hover{
+  transform: scale(1.03);
+}
+
+.profile img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.hero-content{
+  max-width:600px;
+}
+
+.hero-content h1{
+  font-size:52px;
+  margin-bottom:10px;
+  line-height:1.2;
+}
+
+.hero-content h1 span{
+  color:#38bdf8;
+}
+
+.typing-container{
+  font-size:24px;
+  font-weight:600;
+  color:#38bdf8;
+  margin-bottom:20px;
+  min-height:36px;
+  display:flex;
+  align-items:center;
+}
+
+.cursor{
+  display:inline-block;
+  width:3px;
+  background-color:#38bdf8;
+  margin-left:4px;
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink{
+  0%, 100%{ opacity: 1; }
+  50%{ opacity: 0; }
+}
+
+.hero-content p{
+  color:#cbd5e1;
+  line-height:1.8;
+  font-size:16px;
+}
+
+.btn-group{
+  display:flex;
+  gap:15px;
+  margin-top:25px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:12px 24px;
+  background:#38bdf8;
+  color:#0f172a;
+  border-radius:10px;
+  font-weight:600;
+  text-decoration:none;
+  transition:all .3s ease;
+  border:2px solid #38bdf8;
+  cursor:pointer;
+}
+
+.btn-outline{
+  background:transparent;
+  color:#38bdf8;
+}
+
+.btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 8px 20px rgba(56, 189, 248, 0.3);
+}
+
+.btn-outline:hover{
+  background:#38bdf8;
+  color:#0f172a;
+}
+
+/* Sections */
+section{
+  padding:80px 8%;
+}
+
+.title{
+  text-align:center;
+  font-size:36px;
+  color:#38bdf8;
+  margin-bottom:40px;
+  position:relative;
+}
+
+.title::after{
+  content:'';
+  display:block;
+  width:60px;
+  height:4px;
+  background:#38bdf8;
+  margin:10px auto 0;
+  border-radius:2px;
+}
+
+/* About */
+.about-box{
+  background:rgba(255,255,255,.03);
+  padding:35px;
+  border-radius:20px;
+  backdrop-filter:blur(15px);
+  line-height:1.8;
+  border:1px solid rgba(255,255,255,0.05);
+  font-size:17px;
+  color:#e2e8f0;
+}
+
+/* Skills */
+.skills{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:25px;
+}
+
+.card{
+  background:rgba(255,255,255,.03);
+  padding:30px;
+  border-radius:20px;
+  backdrop-filter:blur(15px);
+  transition:.3s ease;
+  border:1px solid rgba(255,255,255,0.05);
+}
+
+.card:hover{
+  transform:translateY(-8px);
+  background:rgba(255,255,255,.06);
+  border-color:rgba(56, 189, 248, 0.4);
+}
+
+.card i{
+  font-size:32px;
+  color:#38bdf8;
+  margin-bottom:15px;
+}
+
+.card h3{
+  margin-bottom:10px;
+  color:#fff;
+}
+
+.card p{
+  color:#94a3b8;
+  font-size:14px;
+  line-height:1.6;
+}
+
+/* Projects Controls & Grid */
+.project-controls{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:30px;
+  flex-wrap:wrap;
+  gap:15px;
+}
+
+.filter-btns{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.filter-btn{
+  padding:8px 18px;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+  color:#fff;
+  border-radius:20px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.filter-btn.active, .filter-btn:hover{
+  background:#38bdf8;
+  color:#0f172a;
+}
+
+.projects{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:25px;
+}
+
+.project{
+  background:rgba(255,255,255,.03);
+  border-radius:20px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,0.05);
+  transition:0.3s ease;
+  display:flex;
+  flex-direction:column;
+}
+
+.project:hover{
+  transform:translateY(-5px);
+  border-color:rgba(56, 189, 248, 0.3);
+}
+
+.project img{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+}
+
+.project-content{
+  padding:20px;
+  flex-grow:1;
+  display:flex;
+  flex-direction:column;
+}
+
+.project-tag{
+  font-size:12px;
+  color:#38bdf8;
+  text-transform:uppercase;
+  font-weight:600;
+  margin-bottom:5px;
+}
+
+.project-content h3{
+  margin-bottom:8px;
+  color:#fff;
+}
+
+.project-content p{
+  color:#94a3b8;
+  font-size:14px;
+  line-height:1.6;
+  margin-bottom:15px;
+  flex-grow:1;
+}
+
+.project-link{
+  color:#38bdf8;
+  text-decoration:none;
+  font-weight:600;
+  font-size:14px;
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+}
+
+/* Modal Styling */
+.modal{
+  display:none;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.8);
+  backdrop-filter:blur(5px);
+  z-index:2000;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+}
+
+.modal-content{
+  background:#1e293b;
+  padding:30px;
+  border-radius:20px;
+  max-width:500px;
+  width:100%;
+  border:1px solid rgba(56, 189, 248, 0.3);
+  position:relative;
+}
+
+.close-modal{
+  position:absolute;
+  top:15px;
+  right:20px;
+  font-size:24px;
+  cursor:pointer;
+  color:#94a3b8;
+}
+
+.modal h3{
+  margin-bottom:20px;
+  color:#38bdf8;
+}
+
+select, input, textarea{
+  width:100%;
+  padding:12px 15px;
+  margin:8px 0 16px;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:10px;
+  color:#fff;
+  outline:none;
+}
+
+select option{
+  background:#1e293b;
+}
+
+select:focus, input:focus, textarea:focus{
+  border-color:#38bdf8;
+}
+
+/* Contact Form */
+.contact{
+  max-width:650px;
+  margin:auto;
+  background:rgba(255,255,255,.03);
+  padding:40px;
+  border-radius:20px;
+  border:1px solid rgba(255,255,255,0.05);
+}
+
+.socials{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  margin-top:30px;
+}
+
+.socials a{
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  background:rgba(255,255,255,0.05);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#38bdf8;
+  font-size:20px;
+  text-decoration:none;
+  transition:0.3s;
+  border:1px solid rgba(255,255,255,0.1);
+}
+
+.socials a:hover{
+  background:#38bdf8;
+  color:#0f172a;
+  transform:translateY(-3px);
+}
+
+/* Footer */
+footer{
+  text-align:center;
+  padding:25px;
+  background:#020617;
+  color:#64748b;
+  font-size:14px;
+  border-top:1px solid rgba(255,255,255,0.05);
+}
+
+/* Mobile Responsiveness */
+@media(max-width:768px){
+  .menu-btn{ display:block; }
+  
+  nav ul{
+    position:fixed;
+    top:70px;
+    left:-100%;
+    width:100%;
+    height:calc(100vh - 70px);
+    background:#0f172a;
+    flex-direction:column;
+    align-items:center;
+    padding-top:40px;
+    transition:0.3s;
+  }
+  
+  nav ul.active{ left:0; }
+  
+  .hero-content h1{ font-size:38px; }
+  .profile{ width:220px; height:220px; }
+  .hero{ text-align:center; justify-content:center; }
+  .btn-group{ justify-content:center; }
+}
+</style>
+</head>
+<body>
+
+<div id="particles-js"></div>
+
+<nav>
+  <a href="#" class="logo">DIPANSHU.</a>
+  <div class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></div>
+  <ul id="navMenu">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#certificates">Certificates</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="profile">
+    <img src="me.jpeg" alt="Dipanshu Raj" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=80'">
+  </div>
+
+  <div class="hero-content">
+    <h1>Hi, I'm <span>Dipanshu Raj</span></h1>
+    <div class="typing-container">
+      <span id="typing"></span><span class="cursor"></span>
+    </div>
+    <p>
+      Professional Web Developer, Creative Editor, and Data Specialist dedicated to delivering high-quality digital solutions, structured data management, and engageable media content.
+    </p>
+
+    <div class="btn-group">
+      <a target="_blank" href="Dipanshu_Raj.pdf" class="btn"><i class="fas fa-eye"></i> View Resume</a>
+      <a target="_blank" href="Dipanshu_Raj.pdf" class="btn btn-outline"><i class="fas fa-download"></i> Download Resume</a>
+    </div>
+  </div>
+</section>
+ 
+<section id="about">
+  <h2 class="title">About Me</h2>
+  <div class="about-box">
+    I am a versatile tech enthusiast skilled in modern Web Development, Video & Graphic Editing, and Data Management. With expertise spanning HTML/CSS/JavaScript, Premiere Pro, and advanced MS Excel tools, I bridge the gap between creative visual media and clean technical implementations.
+  </div>
+</section>
+
+<section id="skills">
+  <h2 class="title">My Skills</h2>
+  <div class="skills">
+    <div class="card">
+      <i class="fas fa-code"></i>
+      <h3>Web Development</h3>
+      <p>HTML5, CSS3, JavaScript ES6+, Responsive Design, Portfolio Websites, UI/UX Principles.</p>
+    </div>
+
+    <div class="card">
+      <i class="fas fa-video"></i>
+      <h3>Professional Editing</h3>
+      <p>Video Editing, Reels/Shorts Editing, Canva Graphic Design, Premiere Pro, Visual Effects.</p>
+    </div>
+
+    <div class="card">
+      <i class="fas fa-table"></i>
+      <h3>Data Operations</h3>
+      <p>Advanced MS Excel, Data Entry, Automated Reporting, Documentation, Data Analytics.</p>
+    </div>
+
+    <div class="card">
+      <i class="fas fa-lightbulb"></i>
+      <h3>Problem Solving</h3>
+      <p>Fast Learner, Strategic Planning, Technical Support, Workflow Optimization.</p>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <h2 class="title">Projects</h2>
+
+  <div class="project-controls">
+    <div class="filter-btns">
+      <button class="filter-btn active" onclick="filterProjects('all')">All</button>
+      <button class="filter-btn" onclick="filterProjects('web')">Web Dev</button>
+      <button class="filter-btn" onclick="filterProjects('editor')">Editing</button>
+      <button class="filter-btn" onclick="filterProjects('data')">Data</button>
+    </div>
+    <button class="btn" onclick="openModal()"><i class="fas fa-plus"></i> Add Project</button>
+  </div>
+
+  <div class="projects" id="projectsContainer">
+    <!-- Default Projects -->
+    <div class="project" data-category="web">
+      <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6" alt="Portfolio Website">
+      <div class="project-content">
+        <span class="project-tag">Web Development</span>
+        <h3>Modern Portfolio</h3>
+        <p>Dynamic responsive personal website with modular UI components.</p>
+        <a href="#" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+
+    <div class="project" data-category="editor">
+      <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4" alt="Cinematic Video Project">
+      <div class="project-content">
+        <span class="project-tag">Video Editing</span>
+        <h3>Cinematic Promo</h3>
+        <p>Professional video editing project for social media campaigns.</p>
+        <a href="#" class="project-link">View Media <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+
+    <div class="project" data-category="data">
+      <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71" alt="Data Management System">
+      <div class="project-content">
+        <span class="project-tag">Data Operations</span>
+        <h3>Excel Analytics Dashboard</h3>
+        <p>Business intelligence reporting dashboard built with MS Excel.</p>
+        <a href="#" class="project-link">View Dashboard <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Add Project Modal -->
+<div class="modal" id="projectModal">
+  <div class="modal-content">
+    <span class="close-modal" onclick="closeModal()">&times;</span>
+    <h3>Upload / Add Project</h3>
+    <form id="projectForm">
+      <label>Project Title</label>
+      <input type="text" id="pTitle" placeholder="e.g. E-Commerce Website" required>
+
+      <label>Category</label>
+      <select id="pCategory">
+        <option value="web">Web Development</option>
+        <option value="editor">Video/Photo Editing</option>
+        <option value="data">Data Operations</option>
+      </select>
+
+      <label>Image URL</label>
+      <input type="url" id="pImg" placeholder="https://example.com/image.jpg" required>
+
+      <label>Description</label>
+      <textarea id="pDesc" rows="3" placeholder="Brief explanation of your project..." required></textarea>
+
+      <label>Project Link</label>
+      <input type="url" id="pLink" placeholder="https://github.com/your-project">
+
+      <button type="submit" class="btn" style="width:100%">Add Project</button>
+    </form>
+  </div>
+</div>
+
+<section id="certificates">
+  <h2 class="title">Certificates</h2>
+  <div class="skills">
+    <div class="card">
+      <i class="fas fa-certificate" style="color:#38bdf8"></i>
+      <h3>Web Development</h3>
+      <p>Certified in HTML, CSS, JavaScript, and Frontend Fundamentals.</p>
+    </div>
+    <div class="card">
+      <i class="fas fa-certificate" style="color:#38bdf8"></i>
+      <h3>Video Editing</h3>
+      <p>Professional Certificate in Media Editing & Video Production.</p>
+    </div>
+    <div class="card">
+      <i class="fas fa-certificate" style="color:#38bdf8"></i>
+      <h3>Data Management</h3>
+      <p>Certification in MS Excel Analytics and Data Handling.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2 class="title">Contact Me</h2>
+  <div class="contact">
+    <form action="https://formsubmit.co/deepanshusah6@gmail.com" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit" class="btn" style="width: 100%; border:none;">Send Message</button>
+    </form>
+
+    <div class="socials">
+      <a target="_blank" href="https://www.facebook.com/deepanshu.sah.58"><i class="fab fa-facebook-f"></i></a>
+      <a target="_blank" href="https://www.instagram.com/dipanshuraj0128/"><i class="fab fa-instagram"></i></a>
+      <a target="_blank" href="https://www.linkedin.com/in/deepanshu-sah-270b02407/"><i class="fab fa-linkedin-in"></i></a>
+      <a target="_blank" href="https://github.com/dipanshusah-cmd"><i class="fab fa-github"></i></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Dipanshu Raj | Developer • Editor • Data Operator
+</footer>
+
+<!-- Particles JS -->
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+<script>
+// Typing Animation Loop
+const words = ["Web Developer", "Professional Editor", "Data Operator"];
+let i = 0, j = 0, isDeleting = false, currentWord = "";
+
+function typeLoop() {
+  currentWord = words[i];
+  if (isDeleting) {
+    document.getElementById("typing").textContent = currentWord.substring(0, j - 1);
+    j--;
+    if (j === 0) {
+      isDeleting = false;
+      i = (i + 1) % words.length;
+    }
+  } else {
+    document.getElementById("typing").textContent = currentWord.substring(0, j + 1);
+    j++;
+    if (j === currentWord.length) {
+      isDeleting = true;
+      setTimeout(typeLoop, 1500);
+      return;
+    }
+  }
+  setTimeout(typeLoop, isDeleting ? 60 : 120);
+}
+typeLoop();
+
+// Particle Background Init
+particlesJS("particles-js", {
+  particles: {
+    number: { value: 60 },
+    size: { value: 3 },
+    move: { speed: 1.5 },
+    line_linked: { enable: true, color: "#38bdf8", opacity: 0.2 }
+  }
+});
+
+// Mobile Navbar Toggle
+const menuBtn = document.getElementById("menuBtn");
+const navMenu = document.getElementById("navMenu");
+
+menuBtn.addEventListener("click", () => {
+  navMenu.classList.toggle("active");
+});
+
+// Modal Logic
+function openModal() {
+  document.getElementById("projectModal").style.display = "flex";
+}
+
+function closeModal() {
+  document.getElementById("projectModal").style.display = "none";
+}
+
+// Add Dynamic Project
+document.getElementById("projectForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  
+  const title = document.getElementById("pTitle").value;
+  const category = document.getElementById("pCategory").value;
+  const img = document.getElementById("pImg").value;
+  const desc = document.getElementById("pDesc").value;
+  const link = document.getElementById("pLink").value || "#";
+
+  const categoryNames = {
+    web: "Web Development",
+    editor: "Video Editing",
+    data: "Data Operations"
+  };
+
+  const projectCard = document.createElement("div");
+  projectCard.className = "project";
+  projectCard.setAttribute("data-category", category);
+  
+  projectCard.innerHTML = `
+    <img src="${img}" alt="${title}" onerror="this.src='https://images.unsplash.com/photo-1517694712202-14dd9538aa97'">
+    <div class="project-content">
+      <span class="project-tag">${categoryNames[category]}</span>
+      <h3>${title}</h3>
+      <p>${desc}</p>
+      <a href="${link}" target="_blank" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+    </div>
+  `;
+
+  document.getElementById("projectsContainer").appendChild(projectCard);
+  
+  // Clear and close
+  this.reset();
+  closeModal();
+});
+
+// Filter Projects
+function filterProjects(cat) {
+  const btns = document.querySelectorAll(".filter-btn");
+  btns.forEach(b => b.classList.remove("active"));
+  event.target.classList.add("active");
+
+  const projects = document.querySelectorAll(".project");
+  projects.forEach(p => {
+    if (cat === "all" || p.getAttribute("data-category") === cat) {
+      p.style.display = "flex";
+    } else {
+      p.style.display = "none";
+    }
+  });
+}
+</script>
+
+</body>
+</html>
